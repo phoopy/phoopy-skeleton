@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys
+import os
+
+dirname = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(dirname, '..'))
+
+from app.app_kernel import AppKernel # noqa
+from phoopy import Application # noqa
+from cleo.inputs.argv_input import ArgvInput # noqa
+
+_input = ArgvInput()
+
+env = _input.get_parameter_option('--env', 'dev')
+debug = not _input.has_option('--no-debug') and env != 'prod'
+
+kernel = AppKernel(env, debug)
+
+application = Application(kernel)
+application.run(_input)

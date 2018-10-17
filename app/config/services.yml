@@ -1,0 +1,14 @@
+services:
+    # top level services
+    logger_handler:
+        class: logging.StreamHandler
+        calls:
+            - ['setLevel', {args: ['<const:logging.DEBUG>']}]
+
+    logger:
+        class: logging.getLogger
+        args:
+            - app
+        calls:
+            - ['setLevel', {args: ['<const:logging.DEBUG>']}]
+            - ['addHandler', {args:['@logger_handler']}]

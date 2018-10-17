@@ -1,0 +1,18 @@
+services:
+
+# Command
+    hello_world_command:
+        class: src.app_bundle.source.command.HelloWorldCommand
+        args:
+            - '@logger'
+        kwargs:
+            root_path: '%kernel.root_path%'
+            hello_world_service: '@hello_world_service'
+        tag:
+            - command
+
+# Sercice
+    hello_world_service:
+        class: src.app_bundle.source.service.HelloWorldService
+        calls:
+            - ['set_fail_test', {args: [False]}]
