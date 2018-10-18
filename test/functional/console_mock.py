@@ -9,7 +9,7 @@ dirname = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(dirname, '..', '..'))
 
 from app.app_kernel import AppKernel # noqa
-from phoopy import Application # noqa
+from phoopy.console import Application # noqa
 from cleo.inputs.argv_input import ArgvInput # noqa
 
 _input = ArgvInput()
