@@ -4,7 +4,7 @@ import os
 dirname = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(dirname, '..'))
 
-from phoopy import Kernel # noqa
+from phoopy.kernel import Kernel # noqa
 from src.app_bundle import AppBundle # noqa
 
 

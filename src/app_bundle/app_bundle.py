@@ -1,4 +1,4 @@
-from phoopy import Bundle
+from phoopy.kernel import Bundle
 from os import path
 
 

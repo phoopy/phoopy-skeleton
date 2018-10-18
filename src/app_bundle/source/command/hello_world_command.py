@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from phoopy import AbstractCommand
+from phoopy.console import AbstractCommand
 
 
 class HelloWorldCommand(AbstractCommand):
