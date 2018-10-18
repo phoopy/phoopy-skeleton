@@ -3,8 +3,8 @@
 ## Install
 
 ```bash
-pip install -r requeriments.txt
-cp app/config/parameters.yml.dist app/config/parameters.yml
+curl https://raw.githubusercontent.com/phoopy/phoopy-installer/master/phoopy-installer -o phoopy-installer
+./phoopy-installer 1.1.0 my-project
 ```
 
 ## Run
