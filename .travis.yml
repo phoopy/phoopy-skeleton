@@ -3,12 +3,12 @@ language: python
 python:
   - "2.7"
   - "pypy"
-  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
 
 before_script:
+  - "pip install --upgrade pip setuptools"
   - "pip install -r requirements-dev.txt"
   - "pip install -r requirements.txt"
   - "cp app/config/parameters.yml.dist app/config/parameters.yml"

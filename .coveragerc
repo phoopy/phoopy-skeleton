@@ -1,0 +1,4 @@
+[run]
+branch = False
+omit=
+   src/app_bundle/source/command/*
