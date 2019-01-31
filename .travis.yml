@@ -11,5 +11,6 @@ python:
 before_script:
   - "pip install -r requirements-dev.txt"
   - "pip install -r requirements.txt"
+  - "cp app/config/parameters.yml.dist app/config/parameters.yml"
 
 script: python -m phulpy test
