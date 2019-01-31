@@ -1,7 +1,7 @@
 phoopy-skeleton
 ======
 
-|Build Status| |Version| |Pyversions|
+|Build Status|
 
 Install:
 ''''''''
