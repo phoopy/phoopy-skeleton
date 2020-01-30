@@ -1,5 +1,13 @@
 services:
 
+# Controller
+    main_controller:
+        class: src.app_bundle.source.controller.MainController
+        kwargs:
+            kernel: '@kernel'
+        tag:
+            - controller
+
 # Command
     hello_world_command:
         class: src.app_bundle.source.command.HelloWorldCommand
