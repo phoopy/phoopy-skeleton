@@ -1,7 +1,8 @@
 from os import system, unlink
 from os.path import dirname, join
 import xml.etree.ElementTree as ET
-from phulpy import task
+from phulpy import task, Output
+from time import sleep
 
 
 @task
@@ -33,7 +34,14 @@ def unit_test(phulpy):
 
 @task
 def functional_test(phulpy):
-    result = system('behave --no-capture --no-capture-stderr test/functional')
+    server = phulpy.execute('bin/console server:start --port=8080 --debug', quiet=True, sync=False)
+    Output.out(Output.colorize('Starting web server (waiting 5 seconds)', 'yellow'))
+    sleep(5)
+
+    BASE_URL = 'localhost:8080'
+    result = system('BASE_URL={} behave --no-capture --no-capture-stderr test/functional'.format(BASE_URL))
+    server.kill()
+
     if result:
         raise Exception('Functional tests failed')
 

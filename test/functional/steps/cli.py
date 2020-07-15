@@ -1,11 +1,12 @@
-import os
 import re
-import subprocess
 import sys
+import os
 import base64
-from behave import when, then
+import subprocess
 from collections import namedtuple
+from behave import when, then
 from pytest import register_assert_rewrite
+from behave_web_api.steps import *  # noqa
 
 register_assert_rewrite()
 
@@ -19,6 +20,7 @@ class CommandRunner(object):
         self.__name = name
         self.__arguments = arguments if arguments is not None else []
         self.__result = None
+        self.__process = None
 
     def __build_command_line(self):
         line = [console_path]
@@ -30,13 +32,10 @@ class CommandRunner(object):
 
     def __check_run(self):
         if not self.__result:
-            process = subprocess.Popen(
-                self.__build_command_line(),
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
-            )
-            stdout, stderr = process.communicate()
-            self.__result = CommandResult(stderr, stderr, process.returncode)
+            if not self.__process:
+                self.run()
+            stdout, stderr = self.__process.communicate()
+            self.__result = CommandResult(stderr, stderr, self.__process.returncode)
 
     def __remove_shell_codes(self, text):
         esc = r'\x1b'
@@ -59,6 +58,16 @@ class CommandRunner(object):
     def get_exit_code(self):
         self.__check_run()
         return self.__result.exit_code
+
+    def run(self):
+        self.__process = subprocess.Popen(
+            self.__build_command_line(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+
+    def kill(self):
+        self.__process.kill()
 
 
 def get_command_runner(context):

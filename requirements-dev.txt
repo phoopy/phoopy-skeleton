@@ -4,7 +4,8 @@ flake8==3.5.0
 mock==2.0.0
 pep8-naming==0.7.0
 pep8==1.7.1
-phulpy==1.0.3
+phulpy==1.0.10
 pytest-cov==2.5.1
 pytest-mock==1.10.0
 pytest==3.6.3
+behave-web-api==1.0.6
