@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+from collections import namedtuple
 from mock import Mock
 
 dirname = os.path.dirname(os.path.realpath(__file__))
