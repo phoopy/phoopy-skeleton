@@ -7,5 +7,5 @@ pep8==1.7.1
 phulpy==1.0.10
 pytest-cov==2.5.1
 pytest-mock==1.10.0
-pytest==3.6.3
+pytest==9.0.3
 behave-web-api==1.0.6
